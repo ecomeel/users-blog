@@ -2,11 +2,7 @@
 export default {
     name: "app",
     data() {
-        return {
-            // albums: [],
-            // isErrorLoad: false,
-            // isLoading: true,
-        };
+        return {};
     },
     methods: {
         increment() {
@@ -17,29 +13,22 @@ export default {
         },
     },
     mounted() {
-        // this.$store.dispatch("getAlbumsFromApi");
-        this.$store.dispatch('getUsersFromApi');
-        console.log(this.$store.getters.users)
+        this.$store.dispatch("getUsersFromApi");
     },
 };
 </script>
 
 <template>
     <div class="app">
-        <!-- <h2>albums is: {{ $store.state.als }}</h2> -->
 
-        <!-- <div v-if="this.$store.state.isLoading">Loading</div>
 
-        <div v-else-if="this.$store.state.isErrorLoad"> Error load</div> -->
+        <h1 class="users__title">Список пользователей:</h1>
 
-        <!-- <ul v-else class="albums">
-            <li class="album" v-for="album in this.$store.getters.albums" :key="album.id">
-                <h2 class="album__title">{{ album.title }}</h2>
-            </li>
-        </ul> -->
+        <p v-if="this.$store.getters.isLoadingUsers">Loading users list...</p>
 
-        <h1 class="users__title">Список пользователей</h1>
-        <ul class="users__list">
+        <p v-else-if="this.$store.getters.isErrorLoadingUsers">Error Loading</p>
+
+        <ul v-else class="users__list">
             <li v-for="user in this.$store.getters.users" :key="user.id">
                 <h1>{{ user.name }}</h1>
             </li>
@@ -47,5 +36,4 @@ export default {
     </div>
 </template>
 
-<style lang="scss" scoped module>
-</style>
+<style lang="scss" scoped module></style>
