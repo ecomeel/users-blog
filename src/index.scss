@@ -1,0 +1,28 @@
+@import "./reset.scss";
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 30px 40px;
+    max-width: 1400px;
+}
+
+.error-loading {
+    margin: 0 auto;
+    padding: 30px;
+    width: 200px;
+    text-align: center;
+    color: red;
+    border: 1px solid red;
+
+    button {
+        margin-top: 20px;
+        border: none;
+        border-bottom: 1px solid gray;
+    }
+}

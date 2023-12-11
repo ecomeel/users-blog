@@ -1,12 +1,9 @@
 import { createApp } from "vue";
-import './reset.scss';
-import App from "./UsersBlog.vue";
+import './index.scss';
 
-// import MyComp from "./components/MyComp.vue";
-import store from "./store/store";
+import App from "./UsersBlog.vue";
+import store from "./store/index";
 
 const app = createApp(App);
 app.use(store);
 app.mount("#app");
-
-// app.component("my-component", MyComp);
