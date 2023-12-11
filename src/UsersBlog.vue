@@ -9,6 +9,7 @@ export default {
     },
     methods: {},
     mounted() {
+        // Отрефакторить название
         this.$store.dispatch("getUsersFromApi");
     },
 };

@@ -5,7 +5,7 @@ import UserPage from "./components/UserPage.vue";
 export default createRouter({
     history: createWebHashHistory(),
     routes: [
-        {path: '/', component: UserBlog, alias: '/'},
-        {path: '/user/:username', component: UserPage}
-    ]
-})
+        { path: "/", name:'home', component: UserBlog, alias: "/" },
+        { path: "/user/:id", component: UserPage, props: true },
+    ],
+});
