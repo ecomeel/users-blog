@@ -1,21 +1,22 @@
 <script>
 export default {
     props: {
-        userId: Number,
-        name: String,
-        username: String,
-        phone: String,
+        user: Object,
+    },
+    methods: {
+        goToUserPage() {
+            this.$router.push(`/user/${this.user.username}`);
+        },
     },
 };
 </script>
 <template>
-    <a href="#/user">
-        <li class="user">
-            <h3 class="user__username">Username: {{ username }}</h3>
-            <p class="user__name">Name: {{ name }}</p>
-            <p class="user__phone">Phone: {{ phone }}</p>
-        </li>
-    </a>
+    <li class="user" @click="goToUserPage">
+        <p>ID :{{ user.id }}</p>
+        <h3 class="user__username">Username: {{ user.username }}</h3>
+        <p class="user__name">Name: {{ user.name }}</p>
+        <p class="user__phone">Phone: {{ user.phone }}</p>
+    </li>
 </template>
 <style lang="scss" scoped>
 .user {
@@ -31,6 +32,5 @@ export default {
     &:hover {
         background-color: rgba($color: #000000, $alpha: 0.1);
     }
-
 }
 </style>

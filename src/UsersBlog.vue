@@ -36,9 +36,7 @@ export default {
                 <User
                     v-for="user in this.$store.getters.users"
                     :key="user.id"
-                    :name="user.name"
-                    :phone="user.phone"
-                    :username="user.username"
+                    :user="user"
                 ></User>
             </ul>
         </div>

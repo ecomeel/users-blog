@@ -6,6 +6,6 @@ export default createRouter({
     history: createWebHashHistory(),
     routes: [
         {path: '/', component: UserBlog, alias: '/'},
-        {path: '/user', component: UserPage}
+        {path: '/user/:username', component: UserPage}
     ]
 })

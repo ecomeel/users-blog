@@ -34,7 +34,7 @@ export default {
                     const userList = [];
                     response.data.forEach(user => {
                         userList.push({
-                            id: user.name,
+                            id: user.id,
                             name: user.name,
                             username: user.username,
                             phone: user.phone,
