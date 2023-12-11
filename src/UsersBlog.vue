@@ -36,6 +36,7 @@ export default {
                     :key="user.id"
                     :name="user.name"
                     :phone="user.phone"
+                    :username="user.username"
                 ></User>
             </ul>
         </div>
@@ -55,8 +56,7 @@ export default {
         text-align: center;
         border: 1px solid black;
     }
-    &__loading,
-    &__error-loading {
+    &__loading {
         text-align: center;
     }
     &__list {

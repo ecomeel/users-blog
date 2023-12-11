@@ -29,13 +29,14 @@ export default {
             context.state.isLoadingUsers = true;
             context.state.isErrorUserLoad = false;
             axios
-                .get("https://jsonplaceholder.typicode.com/userss")
+                .get("https://jsonplaceholder.typicode.com/users")
                 .then((response) => {
                     const userList = [];
                     response.data.forEach(user => {
                         userList.push({
                             id: user.name,
                             name: user.name,
+                            username: user.username,
                             phone: user.phone,
                         });
                     });
