@@ -15,6 +15,8 @@ export default {
 </script>
 
 <template>
+    <div>
+    </div>
     <div class="users">
         <div class="container">
             <h1 class="users__title">Список пользователей:</h1>
