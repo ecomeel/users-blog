@@ -86,9 +86,9 @@ export default {
     &__albums {
         margin-bottom: 70px;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         flex-wrap: wrap;
-        gap: 40px;
+        row-gap: 40px;
         & > * {
             flex: 1 1 50%;
         }
@@ -105,10 +105,17 @@ export default {
     }
 
     &__title {
+        padding-top: 20px;
         margin-bottom: 20px;
         text-align: center;
+        box-shadow: 0px -25px 30px  rgba($color: #000000, $alpha: .07);
+        border-radius: 30px;
         font-size: 35px;
         font-weight: 700;
     }
+}
+
+@media (max-width: 800px) {
+
 }
 </style>
