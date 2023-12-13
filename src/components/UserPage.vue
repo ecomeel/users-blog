@@ -1,6 +1,7 @@
 <script>
 import Album from "./Album.vue";
 import Bio from "./Bio.vue";
+import Post from "./Post.vue";
 
 export default {
     data() {
@@ -12,6 +13,7 @@ export default {
     components: {
         Album,
         Bio,
+        Post,
     },
     methods: {
         goBackToAllUsers() {
@@ -47,11 +49,18 @@ export default {
                     :key="album.id"
                     :title="album.title"
                     :sliderPhotos="album.fivePhotos"
+                    :album="album"
                 ></Album>
             </ul>
 
             <h2 class="user-page__subtitle">Posts</h2>
-            <ul class="user-page__posts"></ul>
+            <ul class="user-page__posts">
+                <Post
+                    v-for="post in this.$store.getters.posts"
+                    :key="post.id"
+                    :post="post"
+                ></Post>
+            </ul>
         </div>
     </div>
 </template>

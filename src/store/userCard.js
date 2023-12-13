@@ -16,6 +16,9 @@ export default {
         albums(state) {
             return state.albums;
         },
+        posts(state) {
+            return state.posts;
+        },
         // photosById: (state) => (id) => {
         //     return state.photosById[id];
         // },
@@ -25,6 +28,10 @@ export default {
             const user = payload.users.find((user) => payload.id == user.id);
             state.selectedUser = user;
         },
+        setAlbums(state, payload) {
+            state.albums = payload.albums;
+            console.log(state.albums);
+        },
         setPosts(state, payload) {
             state.posts = payload.posts;
         },
@@ -32,10 +39,11 @@ export default {
     actions: {
         setSelectedUserContent(context, { userId }) {
             const baseUrl = "https://jsonplaceholder.typicode.com";
+
             // Set albums
             const AlbumsUrl = `${baseUrl}/albums`;
             axios.get(`${AlbumsUrl}?userId=${userId}`).then((res) => {
-                context.state.albums = res.data;
+                context.commit("setAlbums", { albums: res.data });
 
                 // Set photos
                 context.state.albums.forEach((album) => {

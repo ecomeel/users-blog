@@ -8,6 +8,7 @@ export default {
     props: {
         title: String,
         sliderPhotos: Array,
+        album: Object
     },
     components: {
         Swiper,
@@ -22,18 +23,18 @@ export default {
 </script>
 <template>
     <div class="album">
-        <h2>{{ title }}</h2>
+        <h2>{{ album.title }}</h2>
         <div class="slider">
             <swiper
-                :slides-per-view="3"
-                :space-between="20"
+                :slides-per-view="5"
+                :space-between="10"
                 :autoplay="{
                     delay: 2500,
                     disableOnInteraction: false,
                 }"
                 :modules="modules"
             >
-                <swiper-slide v-for="photo in sliderPhotos">
+                <swiper-slide v-for="photo in album.photos">
                     <img
                         class="slider__image"
                         :src="photo.thumbnailUrl"
@@ -51,7 +52,7 @@ h2 {
     font-weight: 700;
 }
 .slider {
-    width: 300px;
+    max-width: 450px;
 }
 img {
     width: 80px;
