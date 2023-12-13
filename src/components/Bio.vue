@@ -56,15 +56,6 @@ export default {
     &__name {
         font-size: 30px;
         font-weight: 700;
-
-    }
-    &__username {
-    }
-    &__phone {
-    }
-    &__email {
-    }
-    &__website {
     }
 }
 </style>

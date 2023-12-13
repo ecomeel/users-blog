@@ -70,7 +70,7 @@ export default {
 
         border-bottom: 1px solid #1111114d;
         border-radius: 15px;
-        transition: outline ease .3s;
+        transition: outline ease 0.3s;
         cursor: pointer;
 
         &:hover {
@@ -86,9 +86,11 @@ export default {
     &__albums {
         margin-bottom: 70px;
         display: flex;
+        justify-content: space-around;
         flex-wrap: wrap;
+        gap: 40px;
         & > * {
-            flex: 1 1 30%;
+            flex: 1 1 50%;
         }
     }
 
@@ -103,9 +105,10 @@ export default {
     }
 
     &__title {
+        margin-bottom: 20px;
+        text-align: center;
         font-size: 35px;
         font-weight: 700;
-        margin-bottom: 25px;
     }
 }
 </style>
