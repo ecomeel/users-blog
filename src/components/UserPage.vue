@@ -21,11 +21,6 @@ export default {
         },
     },
     mounted() {
-        this.$store.commit("setSelectedUserById", {
-            id: this.id,
-            users: this.$store.getters.users,
-        });
-
         this.$store.dispatch({
             type: "setSelectedUserContent",
             userId: this.id,
@@ -40,15 +35,13 @@ export default {
                 Go to All users
             </button>
 
-            <Bio></Bio>
+            <Bio :user="this.$store.getters.selectedUser"></Bio>
 
             <h2 class="user-page__title">Albums</h2>
             <ul class="user-page__albums">
                 <Album
                     v-for="album in this.$store.getters.albums"
                     :key="album.id"
-                    :title="album.title"
-                    :sliderPhotos="album.fivePhotos"
                     :album="album"
                 ></Album>
             </ul>

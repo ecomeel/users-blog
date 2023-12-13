@@ -6,8 +6,6 @@ import "swiper/css";
 
 export default {
     props: {
-        title: String,
-        sliderPhotos: Array,
         album: Object
     },
     components: {

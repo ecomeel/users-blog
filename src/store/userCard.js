@@ -6,7 +6,6 @@ export default {
             selectedUser: {},
             albums: [],
             posts: [],
-            // photosById: {},
         };
     },
     getters: {
@@ -19,18 +18,13 @@ export default {
         posts(state) {
             return state.posts;
         },
-        // photosById: (state) => (id) => {
-        //     return state.photosById[id];
-        // },
     },
     mutations: {
-        setSelectedUserById(state, payload) {
-            const user = payload.users.find((user) => payload.id == user.id);
-            state.selectedUser = user;
+        setUser(state, payload) {
+            state.selectedUser = payload.user;
         },
         setAlbums(state, payload) {
             state.albums = payload.albums;
-            console.log(state.albums);
         },
         setPosts(state, payload) {
             state.posts = payload.posts;
@@ -40,20 +34,25 @@ export default {
         setSelectedUserContent(context, { userId }) {
             const baseUrl = "https://jsonplaceholder.typicode.com";
 
+            // Set bio
+            axios.get(`${baseUrl}/users?id=${userId}`).then((res) => {
+                context.commit("setUser", {
+                    user: res.data[0],
+                });
+            });
+
             // Set albums
             const AlbumsUrl = `${baseUrl}/albums`;
             axios.get(`${AlbumsUrl}?userId=${userId}`).then((res) => {
                 context.commit("setAlbums", { albums: res.data });
 
-                // Set photos
+                // Set albums photos
                 context.state.albums.forEach((album) => {
                     axios
                         .get(`${AlbumsUrl}/${album.id}/photos`)
                         .then((response) => {
                             const albumPhotos = response.data;
-                            const fivePhotos = albumPhotos.slice(0, 5);
                             album.photos = albumPhotos;
-                            album.fivePhotos = fivePhotos;
                         });
                 });
             });
