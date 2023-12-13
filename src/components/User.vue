@@ -45,7 +45,6 @@ export default {
     &:hover {
         background-color: rgba($color: #afbcb7, $alpha: 0.3);
         outline: none;
-        border-bottom: 1px solid rgba(128, 128, 128, 0.506);
         box-shadow: 10px 13px 30px rgba(0, 0, 0, 0.1);
     }
 }

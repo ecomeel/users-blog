@@ -45,12 +45,18 @@ export default {
     height: 100%;
     &__title {
         margin: 0 auto;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         padding-top: 30px;
-        padding-bottom: 30px;
+        padding-bottom: 20px;
+
         max-width: 700px;
         text-align: center;
-        border: 3px solid rgba(128, 128, 128, 0.506);
+        font-weight: 700;
+        font-size: 35px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.214);
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        box-shadow: 0px 6px 10px rgba($color: #6a6a6a84, $alpha: .1);
     }
     &__loading {
         text-align: center;
