@@ -32,7 +32,7 @@ export default {
                 .get("https://jsonplaceholder.typicode.com/users")
                 .then((response) => {
                     const userList = [];
-                    response.data.forEach(user => {
+                    response.data.forEach((user) => {
                         userList.push({
                             id: user.id,
                             name: user.name,

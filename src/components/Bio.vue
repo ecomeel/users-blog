@@ -6,7 +6,9 @@ export default {
 };
 </script>
 <template>
-    <div class="bio">
+    <p v-if="this.$store.getters.isLoadingUser">Loadig User...</p>
+    <p v-else-if="this.$store.getters.isErrorLoadingUser">Error loading User</p>
+    <div v-else class="bio">
         <div class="bio__about">
             <h2 class="bio__name">{{ user.name }}</h2>
             <p class="bio__username">

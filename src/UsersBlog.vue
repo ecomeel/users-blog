@@ -16,8 +16,11 @@ export default {
     <div class="users">
         <div class="container">
             <h1 class="users__title">Select User</h1>
-            <p class="users__loading" v-if="this.$store.getters.isLoadingUsers">
-                Loading users list...
+            <p
+                class="loading"
+                v-if="this.$store.getters.isLoadingUsers"
+            >
+                Loading...
             </p>
             <p
                 class="error-loading"
@@ -57,9 +60,6 @@ export default {
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
         box-shadow: 0px 6px 10px rgba($color: #6a6a6a84, $alpha: 0.1);
-    }
-    &__loading {
-        text-align: center;
     }
     &__list {
         display: flex;

@@ -41,6 +41,10 @@ export default {
             ></Bio>
 
             <h2 class="user-page__title">Albums</h2>
+            <p v-if="this.$store.getters.isLoadingAlbums">Loadig Albums...</p>
+            <p v-else-if="this.$store.getters.isErrorLoadingAlbums">
+                Error loading Albums
+            </p>
             <ul class="user-page__albums">
                 <Album
                     v-for="album in this.$store.getters.albums"
@@ -50,6 +54,10 @@ export default {
             </ul>
 
             <h2 class="user-page__title">Posts</h2>
+            <p v-if="this.$store.getters.isLoadingPosts">Loadig Posts...</p>
+            <p v-else-if="this.$store.getters.isErrorLoadingPosts">
+                Error loading Posts
+            </p>
             <ul class="user-page__posts">
                 <Post
                     v-for="post in this.$store.getters.posts"
@@ -108,7 +116,7 @@ export default {
         padding-top: 20px;
         margin-bottom: 20px;
         text-align: center;
-        box-shadow: 0px -25px 30px  rgba($color: #000000, $alpha: .07);
+        box-shadow: 0px -25px 30px rgba($color: #000000, $alpha: 0.07);
         border-radius: 30px;
         font-size: 35px;
         font-weight: 700;
@@ -116,6 +124,5 @@ export default {
 }
 
 @media (max-width: 800px) {
-
 }
 </style>

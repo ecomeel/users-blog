@@ -25,7 +25,6 @@ export default {
         <div class="slider">
             <swiper
                 :slides-per-view="5"
-                :space-between="10"
                 :autoplay="{
                     delay: 2500,
                     disableOnInteraction: false,
@@ -68,9 +67,9 @@ export default {
         max-width: 100%;
     }
     .slider__image {
-            width: 160px;
-            height: 160px;
-        }
+        width: 160px;
+        height: 160px;
+    }
 }
 
 @media (max-width: 890px) {
