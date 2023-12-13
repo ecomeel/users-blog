@@ -25,7 +25,7 @@ export default {
         },
     },
     actions: {
-        getUsersFromApi(context) {
+        setUsersFromApiToStore(context) {
             context.state.isLoadingUsers = true;
             context.state.isErrorUserLoad = false;
             axios

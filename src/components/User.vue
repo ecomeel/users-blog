@@ -26,15 +26,19 @@ export default {
 .user {
     padding: 15px;
     height: 100px;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
-    transition: background-color ease 0.6s;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    outline: 1px solid rgba(128, 128, 128, 0.506);
+    border-radius: 10px;
+    transition: all ease 0.6s;
 
     &:hover {
         background-color: rgba($color: #000000, $alpha: 0.1);
+        outline: none;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.506);
     }
 }
 </style>

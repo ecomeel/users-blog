@@ -3,46 +3,46 @@ import axios from "axios";
 export default {
     state() {
         return {
-            id: "",
             user: {},
             albums: [],
             photosById: {},
         };
     },
     getters: {
-        // getUserById(state) {
-        //     console.log(id)
-        // }
-        getUserById: (state, getters, rootState) => (id) => {
-            const users = getters.users;
-            const user = users.find((user) => user.id == id);
-            console.log(user);
+        // getUserById: (state, getters, rootState) => (id) => {
+        //     const users = getters.users;
+        //     const user = users.find((user) => user.id == id);
+        // },
+        albums(state) {
+            return state.albums;
+        },
+        photosById: (state) => (id) => {
+            return state.photosById[id];
         },
     },
     mutations: {},
     actions: {
-        // get Albums
-        getAlbumsByUserIdFromApi(state, { id }) {
+        setSelectedUserContent(context, { userId }) {
+            // Set albums
             const baseAlbumsUrl = "https://jsonplaceholder.typicode.com/albums";
-            axios.get(`${baseAlbumsUrl}?userId=${id}`).then((res) => {
-                state.albums = res.data;
+            axios.get(`${baseAlbumsUrl}?userId=${userId}`).then((res) => {
+                context.state.albums = res.data;
 
-                const albumsIds = state.albums.map((album) => album.id);
-                const photosById = {};
-                albumsIds.forEach((albumId) => {
-                    // get photos
+                // Set photos
+                context.state.albums.forEach((album) => {
                     axios
-                        .get(`${baseAlbumsUrl}/${albumId}/photos`)
+                        .get(`${baseAlbumsUrl}/${album.id}/photos`)
                         .then((response) => {
-                            photosById[albumId] = response.data
+                            const albumPhotos = response.data;
+                            const fivePhotos = albumPhotos.slice(0, 5);
+                            album.photos = albumPhotos;
+                            album.fivePhotos = fivePhotos;
                         });
                 });
-                state.photosById = photosById;
-                console.log(state.photosById)
             });
+            console.log(context.state.albums)
         },
     },
 };
-
 // Что нужно сделать:
 // Рендер страницы пользователя (Альбомы + карусель 5 )

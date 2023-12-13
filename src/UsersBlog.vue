@@ -4,13 +4,8 @@ export default {
     components: {
         User: User,
     },
-    data() {
-        return {};
-    },
-    methods: {},
     mounted() {
-        // Отрефакторить название
-        this.$store.dispatch("getUsersFromApi");
+        this.$store.dispatch("setUsersFromApiToStore");
     },
 };
 </script>
