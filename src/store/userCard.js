@@ -3,16 +3,15 @@ import axios from "axios";
 export default {
     state() {
         return {
-            user: {},
+            selectedUser: {},
             albums: [],
             photosById: {},
         };
     },
     getters: {
-        // getUserById: (state, getters, rootState) => (id) => {
-        //     const users = getters.users;
-        //     const user = users.find((user) => user.id == id);
-        // },
+        selectedUser(state) {
+            return state.selectedUser
+        },
         albums(state) {
             return state.albums;
         },
@@ -22,9 +21,10 @@ export default {
     },
     mutations: {
         setSelectedUserById(state, payload) {
-            const user = payload.users.find((user) => payload.id == user.id)
-            console.log(user)
-        }
+            const user = payload.users.find((user) => payload.id == user.id);
+            state.selectedUser = user;
+            console.log(state.selectedUser)
+        },
     },
     actions: {
         setSelectedUserContent(context, { userId }) {

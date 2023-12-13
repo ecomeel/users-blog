@@ -23,7 +23,7 @@ export default {
             id: this.id,
             users: this.$store.getters.users
         })
-        // console.log(this.$store.getters.users)
+        
         this.$store.dispatch({
             type: "setSelectedUserContent",
             userId: this.id,
