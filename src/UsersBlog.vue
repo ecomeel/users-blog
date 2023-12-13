@@ -1,8 +1,9 @@
 <script>
 import User from "./components/User.vue";
+
 export default {
     components: {
-        User: User,
+        User,
     },
     mounted() {
         this.$store.dispatch("setUsersFromApiToStore");
@@ -11,8 +12,7 @@ export default {
 </script>
 
 <template>
-    <div>
-    </div>
+    <div></div>
     <div class="users">
         <div class="container">
             <h1 class="users__title">Select User</h1>
@@ -56,7 +56,7 @@ export default {
         border-bottom: 1px solid rgba(128, 128, 128, 0.214);
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
-        box-shadow: 0px 6px 10px rgba($color: #6a6a6a84, $alpha: .1);
+        box-shadow: 0px 6px 10px rgba($color: #6a6a6a84, $alpha: 0.1);
     }
     &__loading {
         text-align: center;
@@ -75,7 +75,6 @@ export default {
 
 @media (max-width: 650px) {
     .users {
-
         &__list {
             & > * {
                 flex: 1 1 100%;

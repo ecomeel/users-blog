@@ -31,11 +31,14 @@ export default {
 <template>
     <div class="user-page">
         <div class="container">
-            <button class="user-page__go-back-btn" @click="goBackToAllUsers">
-                Go to All users
-            </button>
+            <a class="user-page__go-back-btn" @click="goBackToAllUsers">
+                &lt Go to Users List
+            </a>
 
-            <Bio :user="this.$store.getters.selectedUser"></Bio>
+            <Bio
+                class="user-page__bio"
+                :user="this.$store.getters.selectedUser"
+            ></Bio>
 
             <h2 class="user-page__title">Albums</h2>
             <ul class="user-page__albums">
@@ -46,7 +49,7 @@ export default {
                 ></Album>
             </ul>
 
-            <h2 class="user-page__subtitle">Posts</h2>
+            <h2 class="user-page__title">Posts</h2>
             <ul class="user-page__posts">
                 <Post
                     v-for="post in this.$store.getters.posts"
@@ -59,12 +62,50 @@ export default {
 </template>
 <style scoped lang="scss">
 .user-page {
+    &__go-back-btn {
+        padding: 10px;
+
+        font-weight: 700;
+        font-size: 24px;
+
+        border-bottom: 1px solid #1111114d;
+        border-radius: 15px;
+        transition: outline ease .3s;
+        cursor: pointer;
+
+        &:hover {
+            outline: 2px solid #b9b9b94d;
+        }
+    }
+
+    &__bio {
+        margin-top: 40px;
+        margin-bottom: 50px;
+    }
+
     &__albums {
+        margin-bottom: 70px;
         display: flex;
         flex-wrap: wrap;
         & > * {
             flex: 1 1 30%;
         }
+    }
+
+    &__posts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        & > * {
+            flex: 1 1 23%;
+        }
+    }
+
+    &__title {
+        font-size: 35px;
+        font-weight: 700;
+        margin-bottom: 25px;
     }
 }
 </style>
