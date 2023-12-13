@@ -12,29 +12,41 @@ export default {
 </script>
 <template>
     <li class="user" @click="goToUserPage">
-        <p>ID :{{ user.id }}</p>
-        <h3 class="user__username">Username: {{ user.username }}</h3>
-        <p class="user__name">Name: {{ user.name }}</p>
-        <p class="user__phone">Phone: {{ user.phone }}</p>
+        <h3 class="user__username">
+            <span class="user__subtitle">Username:</span> {{ user.username }}
+        </h3>
+        <p class="user__name">
+            <span class="user__subtitle">Name:</span> {{ user.name }}
+        </p>
+        <p class="user__phone">
+            <span class="user__subtitle">Phone:</span> {{ user.phone }}
+        </p>
     </li>
 </template>
 <style lang="scss" scoped>
 .user {
     padding: 15px;
-    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
-    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
     outline: 1px solid rgba(128, 128, 128, 0.506);
     border-radius: 10px;
     transition: all ease 0.6s;
 
+    & > *:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    &__subtitle {
+        font-weight: 700;
+    }
+
     &:hover {
-        background-color: rgba($color: #000000, $alpha: 0.1);
+        background-color: rgba($color: #afbcb7, $alpha: 0.3);
         outline: none;
         border-bottom: 1px solid rgba(128, 128, 128, 0.506);
+        box-shadow: 10px 13px 30px rgba(0, 0, 0, 0.1);
     }
 }
 </style>

@@ -15,7 +15,7 @@ export default {
     </div>
     <div class="users">
         <div class="container">
-            <h1 class="users__title">Список пользователей:</h1>
+            <h1 class="users__title">Select User</h1>
             <p class="users__loading" v-if="this.$store.getters.isLoadingUsers">
                 Loading users list...
             </p>
@@ -45,12 +45,12 @@ export default {
     height: 100%;
     &__title {
         margin: 0 auto;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
         padding-top: 30px;
         padding-bottom: 30px;
-        max-width: 300px;
+        max-width: 700px;
         text-align: center;
-        border: 1px solid black;
+        border: 3px solid rgba(128, 128, 128, 0.506);
     }
     &__loading {
         text-align: center;
@@ -61,8 +61,19 @@ export default {
         gap: 30px;
 
         & > * {
-            flex: 1 1 45%;
+            flex: 1 1 31%;
             text-align: center;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .users {
+
+        &__list {
+            & > * {
+                flex: 1 1 100%;
+            }
         }
     }
 }
