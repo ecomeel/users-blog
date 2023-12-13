@@ -8,9 +8,10 @@ export default {
 <template>
     <div class="bio">
         <h2 class="bio__name">{{ user.name }}</h2>
-        <!-- <h2 class="bio__name">{{ this.$store.getters.selectedUser['name'] }}</h2> -->
-        <!-- <p class="bio__username">{{ this.$store.getters.selectedUser['username'] }}</p>
-        <p class="bio__phone">{{ this.$store.getters.selectedUser['phone'] }}</p> -->
+        <p class="bio__username">{{ user.username }}</p>
+        <p class="bio__phone">{{ user.phone }}</p>
+        <p class="bio__email">{{ user.email }}</p>
+        <p class="bio__website">{{ user.website }}</p>
     </div>
 </template>
 <style></style>
