@@ -20,7 +20,12 @@ export default {
             return state.photosById[id];
         },
     },
-    mutations: {},
+    mutations: {
+        setSelectedUserById(state, payload) {
+            const user = payload.users.find((user) => payload.id == user.id)
+            console.log(user)
+        }
+    },
     actions: {
         setSelectedUserContent(context, { userId }) {
             // Set albums
@@ -40,7 +45,6 @@ export default {
                         });
                 });
             });
-            console.log(context.state.albums)
         },
     },
 };

@@ -6,10 +6,6 @@ export default {
     methods: {
         goToUserPage() {
             this.$router.push(`/user/${this.user.id}`);
-            // this.$router.push({
-            //     name: "user",
-            //     params: { id: this.user.id, user: this.user.name },
-            // });
         },
     },
 };

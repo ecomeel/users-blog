@@ -1,6 +1,7 @@
 <script>
 import Album from "./Album.vue";
-import { mapState } from "vuex";
+import Bio from "./Bio.vue";
+
 export default {
     data() {
         return {
@@ -9,7 +10,8 @@ export default {
         };
     },
     components: {
-        Album: Album,
+        Album,
+        Bio
     },
     methods: {
         goBackToAllUsers() {
@@ -17,6 +19,11 @@ export default {
         },
     },
     mounted() {
+        this.$store.commit('setSelectedUserById', {
+            id: this.id,
+            users: this.$store.getters.users
+        })
+        // console.log(this.$store.getters.users)
         this.$store.dispatch({
             type: "setSelectedUserContent",
             userId: this.id,
@@ -30,7 +37,10 @@ export default {
             <button class="user-page__go-back-btn" @click="goBackToAllUsers">
                 Go to All users
             </button>
+
             <h3 class="user-page__title">User page {{ $route.params.id }}</h3>
+            <Bio></Bio>
+
             <ul class="user-page__albums">
                 <Album
                     v-for="album in this.$store.getters.albums"

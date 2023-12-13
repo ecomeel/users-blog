@@ -18,7 +18,6 @@ export default {
             modules: [Autoplay],
         };
     },
-    methods: {},
 };
 </script>
 <template>
