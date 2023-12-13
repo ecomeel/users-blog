@@ -11,7 +11,7 @@ export default {
     },
     components: {
         Album,
-        Bio
+        Bio,
     },
     methods: {
         goBackToAllUsers() {
@@ -19,11 +19,11 @@ export default {
         },
     },
     mounted() {
-        this.$store.commit('setSelectedUserById', {
+        this.$store.commit("setSelectedUserById", {
             id: this.id,
-            users: this.$store.getters.users
-        })
-        
+            users: this.$store.getters.users,
+        });
+
         this.$store.dispatch({
             type: "setSelectedUserContent",
             userId: this.id,
@@ -38,9 +38,9 @@ export default {
                 Go to All users
             </button>
 
-            <h3 class="user-page__title">User page {{ $route.params.id }}</h3>
             <Bio></Bio>
 
+            <h2 class="user-page__title">Albums</h2>
             <ul class="user-page__albums">
                 <Album
                     v-for="album in this.$store.getters.albums"
@@ -49,6 +49,8 @@ export default {
                     :sliderPhotos="album.fivePhotos"
                 ></Album>
             </ul>
+
+            <h2 class="user-page__subtitle">Posts</h2>
             <ul class="user-page__posts"></ul>
         </div>
     </div>

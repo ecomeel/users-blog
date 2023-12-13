@@ -5,38 +5,42 @@ export default {
         return {
             selectedUser: {},
             albums: [],
-            photosById: {},
+            posts: [],
+            // photosById: {},
         };
     },
     getters: {
         selectedUser(state) {
-            return state.selectedUser
+            return state.selectedUser;
         },
         albums(state) {
             return state.albums;
         },
-        photosById: (state) => (id) => {
-            return state.photosById[id];
-        },
+        // photosById: (state) => (id) => {
+        //     return state.photosById[id];
+        // },
     },
     mutations: {
         setSelectedUserById(state, payload) {
             const user = payload.users.find((user) => payload.id == user.id);
             state.selectedUser = user;
-            console.log(state.selectedUser)
+        },
+        setPosts(state, payload) {
+            state.posts = payload.posts;
         },
     },
     actions: {
         setSelectedUserContent(context, { userId }) {
+            const baseUrl = "https://jsonplaceholder.typicode.com";
             // Set albums
-            const baseAlbumsUrl = "https://jsonplaceholder.typicode.com/albums";
-            axios.get(`${baseAlbumsUrl}?userId=${userId}`).then((res) => {
+            const AlbumsUrl = `${baseUrl}/albums`;
+            axios.get(`${AlbumsUrl}?userId=${userId}`).then((res) => {
                 context.state.albums = res.data;
 
                 // Set photos
                 context.state.albums.forEach((album) => {
                     axios
-                        .get(`${baseAlbumsUrl}/${album.id}/photos`)
+                        .get(`${AlbumsUrl}/${album.id}/photos`)
                         .then((response) => {
                             const albumPhotos = response.data;
                             const fivePhotos = albumPhotos.slice(0, 5);
@@ -45,8 +49,12 @@ export default {
                         });
                 });
             });
+
+            // Set Posts
+            const userPostsUrl = `${baseUrl}/posts?userId=${userId}`;
+            axios.get(userPostsUrl).then((res) => {
+                context.commit("setPosts", { posts: res.data });
+            });
         },
     },
 };
-// Что нужно сделать:
-// Рендер страницы пользователя (Альбомы + карусель 5 )
