@@ -21,10 +21,9 @@ export default {
         },
     },
     mounted() {
-        this.$store.dispatch({
-            type: "setSelectedUserContent",
-            userId: this.id,
-        });
+        this.$store.dispatch("setSelectedUser", this.id);
+        this.$store.dispatch("setAlbums", this.id);
+        this.$store.dispatch("setPosts", this.id);
     },
 };
 </script>
@@ -32,9 +31,10 @@ export default {
     <div class="user-page">
         <div class="container">
             <a class="user-page__go-back-btn" @click="goBackToAllUsers">
-                &lt Go to Users List
+                &lt Go Back
             </a>
-
+            <RouterView></RouterView>
+            <!-- UserInfo Component -->
             <Bio
                 class="user-page__bio"
                 :user="this.$store.getters.selectedUser"
@@ -45,7 +45,7 @@ export default {
             <p v-else-if="this.$store.getters.isErrorLoadingAlbums">
                 Error loading Albums
             </p>
-            <ul class="user-page__albums">
+            <ul id="albums" class="user-page__albums">
                 <Album
                     v-for="album in this.$store.getters.albums"
                     :key="album.id"
@@ -58,7 +58,7 @@ export default {
             <p v-else-if="this.$store.getters.isErrorLoadingPosts">
                 Error loading Posts
             </p>
-            <ul class="user-page__posts">
+            <ul id="posts" class="user-page__posts">
                 <Post
                     v-for="post in this.$store.getters.posts"
                     :key="post.id"

@@ -59,16 +59,9 @@ export default {
         },
     },
     actions: {
-        setSelectedUserContent(context, { userId }) {
+        setSelectedUser(context, userId) {
             context.state.isLoadingUser = true;
             context.state.isErrorLoadingUser = false;
-            context.state.isLoadingAlbums = true;
-            context.state.isErrorLoadingAlbums = false;
-            context.state.isLoadingPhotos = true;
-            context.state.isErrorLoadingPhotos = false;
-            context.state.isLoadingPosts = true;
-            context.state.isErrorLoadingPosts = false;
-
             const baseUrl = "https://jsonplaceholder.typicode.com";
 
             // Set bio
@@ -86,9 +79,16 @@ export default {
                 .finally(() => {
                     context.state.isLoadingUser = false;
                 });
+        },
+        setAlbums(context, userId) {
+            context.state.isLoadingAlbums = true;
+            context.state.isErrorLoadingAlbums = false;
+            context.state.isLoadingPhotos = true;
+            context.state.isErrorLoadingPhotos = false;
 
-            // Set albums
+            const baseUrl = "https://jsonplaceholder.typicode.com";
             const AlbumsUrl = `${baseUrl}/albums`;
+
             axios
                 .get(`${AlbumsUrl}?userId=${userId}`)
                 .then((res) => {
@@ -115,8 +115,12 @@ export default {
                 .finally(() => {
                     context.state.isLoadingAlbums = false;
                 });
+        },
+        setPosts(context, userId) {
+            context.state.isLoadingPosts = true;
+            context.state.isErrorLoadingPosts = false;
 
-            // Set Posts
+            const baseUrl = "https://jsonplaceholder.typicode.com";
             const userPostsUrl = `${baseUrl}/posts?userId=${userId}`;
             axios
                 .get(userPostsUrl)
