@@ -5,7 +5,7 @@ export default {
     },
     methods: {
         goToUserPage() {
-            this.$router.push(`/user/${this.user.id}`);
+            this.$router.push(`/user/${this.user.id}/userinfo`);
         },
     },
 };

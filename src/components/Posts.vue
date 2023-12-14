@@ -15,10 +15,33 @@ export default {
 };
 </script>
 <template>
-    <h1>Photos</h1>
-
-    <ul>
-        <Post v-for="post in this.$store.getters.posts" :post="post"> </Post>
-    </ul>
+    <div class="posts">
+        <h1 class="posts__title">Photos</h1>
+        <ul class="posts__list">
+            <Post
+                class="posts__item"
+                v-for="post in this.$store.getters.posts"
+                :post="post"
+            >
+            </Post>
+        </ul>
+    </div>
 </template>
-<style></style>
+<style lang="scss" scoped>
+.posts {
+    margin-top: 40px;
+    &__title {
+        margin-bottom: 30px;
+        font-size: 35px;
+        font-weight: 700;
+    }
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    &__item {
+        flex: 1 1 23%;
+    }
+}
+</style>

@@ -20,7 +20,7 @@ export default createRouter({
                     component: UserInfo,
                 },
                 {
-                    path: "photos",
+                    path: "albums",
                     component: Photos,
                 },
                 {
