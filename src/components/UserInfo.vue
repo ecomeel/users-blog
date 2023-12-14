@@ -34,6 +34,7 @@ export default {
             class="user-info__bio"
             :user="this.$store.getters.selectedUser"
         ></Bio>
+        
         <a class="user-info__title" @click="goToAlbums">Albums</a>
         <p v-if="this.$store.getters.isLoadingAlbums">Loadig Albums...</p>
         <p v-else-if="this.$store.getters.isErrorLoadingAlbums">
@@ -46,6 +47,7 @@ export default {
                 :album="album"
             ></Album>
         </ul>
+
         <a class="user-info__title" @click="goToPosts">Posts</a>
         <p v-if="this.$store.getters.isLoadingPosts">Loadig Posts...</p>
         <p v-else-if="this.$store.getters.isErrorLoadingPosts">

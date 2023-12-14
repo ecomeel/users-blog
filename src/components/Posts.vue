@@ -17,6 +17,10 @@ export default {
 <template>
     <div class="posts">
         <h1 class="posts__title">Photos</h1>
+        <p v-if="this.$store.getters.isLoadingPosts">Loadig Posts...</p>
+        <p v-else-if="this.$store.getters.isErrorLoadingPosts">
+            Error loading Posts
+        </p>
         <ul class="posts__list">
             <Post
                 class="posts__item"
