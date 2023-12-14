@@ -56,7 +56,7 @@ export default {
     &__image {
         width: 120px;
         height: 120px;
-        background: url("../assets/img/error-loading.png") no-repeat;
+        background: url("../assets/img/loading.png") no-repeat;
         background-size: cover;
         position: 50% 50%;
     }
